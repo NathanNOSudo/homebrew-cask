@@ -20,6 +20,12 @@ cask "adoptopenjdk" do
     "~/Library/Saved Application State/net.java.openjdk.java.savedState",
   ]
 
+  livecheck do
+    url "https://adoptopenjdk.net/releases.html?variant=openjdk16&jvmVariant=hotspot"
+    strategy :page_match
+    regex(%r{href=.*?/jdk-(\d+(?:\.\d+)*)\+([\d]+)/}i)
+  end
+
   caveats do
     <<~EOS
       Temurin is the official successor to this software:
